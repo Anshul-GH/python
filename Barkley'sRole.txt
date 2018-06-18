@@ -1,0 +1,41 @@
+Barkley's Role
+--------------
+- Support and extend the Data Science team’s mission of enabling predictive decision making across Barclays 
+- Contribute technically and creatively to the team’s collective toolbox for problem solving. 
+- Evangelise for data-driven approaches in forums across the bank. 
+- Deputise for the Head of Data Science where required.
+
+Key Accountabilities
+· Develop machine learning and artificial intelligence solutions as part of the project roadmap of the team
+· Support the team in balancing strategic project work with incoming needs for data-driven methods.
+· Be agile, quick-thinking, and practical.
+· Evangelise for solving problems through Data across the bank – contribute to the presence of our team in horizontal bank-wide forums.
+· Contribute a creative and analytical/technical viewpoint of problems
+
+Stakeholder Management and Leadership
+- Critical to the success of the team are properly ingesting requirements and effectively communicating out results, most often with non-data scientist colleagues. 
+- As a Data Scientist you will be expected to work with the Head of Data Science to lead stakeholders through how data science can unlock value in the business, identify challenges alongside the business and explore solution options by using machine learning techniques. 
+- Deputise for the Head of Data Science in leadership meetings and present to functional Directors.
+
+Decision-making and Problem Solving
+- Ability to disseminate business needs into Data Science actions/strategy, and execute in a prioritised manner against this. 
+- Use your expertise in Data Science to drive the Data Science agenda within GTIS and the wider rank. 
+- Take a value-driven approach and make appropriate prioritisations and practical decisions to get things done and influence.
+
+Person Specification
+· Outlook balanced between applying the academic/scientific lens to real-world problems, and a hunger to make a profound, lasting impact within the bank:
+· Curiosity: identify opportunities for betterment, and scope to apply scientific methods to solve current problems.
+· Academic and analytical – ability to look at a problem, describe it, break it down, and attack it.
+· A challenger: where an opportunity for doing something better is seen, speak up and advocate for this
+· Passion for driving innovation and changing minds
+· Results- and value-driven. A strong proponent of the “80-20” rule.
+· Take the Barclays Values to heart; strive to demonstrate these in everything they do in the workplace.
+
+Essential Skills/Basic Qualifications:
+· Extensive experience solving real-world problems and creating value through the end-to-end, productionised application of Data Science, Machine Learning, and Artificial Intelligence methods.
+· Extensive experience with the Python Data Science/Machine learning stack.
+· Experience with data retrieval, ingestion, storage, reporting and visualisation methods.
+· Bachelor’s level degree in Science, Technology, Engineering, Mathematics, or other relevant field, and associated mathematical/analytical skills.
+
+Desirable skills/Preferred Qualifications:
+· Experience with Tensorflow, neural networks, xgboost, nltk.
