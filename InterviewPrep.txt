@@ -1,0 +1,104 @@
+About Yourself
+- Working as a Technical Architect and Data Scientist at TCS
+- Total industry experience of 11 years.
+- Last 4 years, I have been working on Machine Learning initiatives.
+- Successfully delivered a Predictive Machine Learning Model solution for the Supply Chain Management team for the client - Daimler Trucks.
+- Based on the input features, the model predicts if a specific item will miss the anticipated delivery date to the assembling plant.
+
+The project:
+- The model is created and deployed onto a UNIX production server
+- A daily batch is extracted into a flat-file at a location on the server.
+- The flie is read by the Python script.
+- We are using pandas package read the data
+data = pd.read_csv('<file_path>', index_col=0)
+- Structure of the file:
+<spec_changes>|<planning_elements>|<drop_in>|<qa_recalls>|etc - all at the same granularity level | <shortage_flag = 1/0>
+- 20 odd feature columns - read as 'out-of-sample' data for the model
+- the feature data is stored in a pandas 'DataFrame' object - like a matrix
+- this dataframe is then passed as input to the predict function under scikit-learn
+- the output is a (n X 1) response vector where n is no on input rows containing the predicted values (1 or 0) indicating 'shortage' or 'not'
+- this information is then written back to a reporting layer 
+resp_vect.to_csv(r'<filepath>', header=None, index=None, sep=' ', mode='a')
+
+How we created the model?
+- We tried multiple models including:
+* Linear Regression
+* Logistic Regression
+* K Nearest Neighbors for the optimum value of K
+
+Steps:
+
+1. Import the relevant package
+>>> from sklearn.linear_model import LinearRegression
+>>> from sklearn.linear_model import LogisticRegression
+>>> from sklearn.neighbors import KNeighborsClassifier
+
+2. Instantiate the model with the relevant constructors and parameters
+>>> logreg = LogisticRegression()
+>>> linreg = LinearRegression()
+>>> knn = KNeighborsClassifier()
+
+3. Fit the historical data with the model
+>>> obj.fit(X, y)
+X - all the feature columns at the same granularity level
+y - shortage_flag - we already knew if this eventually resulted into shortage or not
+
+4. Once the model is fit, the object is dumped into a python 'pickle file' using sklearn's externals package:
+>>> from sklearn.externals import joblib
+>>> joblib.dump(obj, 'filename.pkl')
+
+5. Daily Load. Call the object back using the joblib.load function
+>>> obj = joblib.load('filename.pkl') 
+
+6. For the new/out-of-sample feature matrix (X_inp) we call the predict function and store the result into a feature vector y_pred
+>>> y_pred = obj.predict(X_inp)
+>>> y_pred.to_csv(r'<filepath>', header=None, index=None, sep=' ', mode='a')
+
+-------------------------------------------------------------------------------------------------------------------
+Model Evaluation / Tuning / Selection:
+
+Step 1: 'Calculating Training Accuracy' across models
+- Use the entire historical data to train the model
+- Apply the same feature matrix again to generate a predicted response vector and compare with actual responses
+>>> from sklearn import metrics
+>>> print(metrics.accuracy_score(y, y_pred))
+
+Step 2: Train-test Split
+>>> from sklearn.model_selection import train_test_split
+>>> X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=4)
+- import the corresponding scikit-learn package
+- instantiate the object
+- split the data-set into training and testing set
+- fit the model to the training dataset
+- save the predictions made on the test feature matrix 
+- calculate accuracy on y_test and y_pred
+- repeat the same process across models
+
+Step3: K-fold cross validation
+>>> from sklearn.cross_validation import cross_val_score
+>>> # 10-fold cross-validation with KNN(5)
+>>> knn = KNeighborsClassifier(n_neighbors=5)
+>>> scores = cross_val_score(knn, X, y, cv=10, scoring='accuracy')
+>>> print(scores)
+
+-------------------------------------------------------------------------------------------------------------------
+Feature Selection
+
+Step1: MAE - Mean Absolute Error, MSE - Mean Squared Error, RMSE - Root Mean Squared Error
+>>> from sklearn import metrics
+>>> metrics.mean_absolute_error(true, pred)
+>>> metrics.mean_squared_error(true, pred)
+>>> np.sqrt(metrics.mean_squared_error(true, pred))
+
+Step2: K-fold cross validation - 
+>>> scores = cross_val_score(linreg, X, y, cv=10, scoring='neg_mean_squared_error')
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+Confusion Matrix
+
+-------------------------------------------------------------------------------------------------------------------
+
+- Principal Component Analysis
+- 
